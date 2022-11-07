@@ -20,6 +20,11 @@ io.on('connection', function (socket) {
     });
 });
 
+//Add an index route saying server is running
+app.get('/', function (req, res) {
+    res.send('Server is running!');
+});
+
 server.listen(80, () => {
     console.log('Server running and listening on port 80');
 });
