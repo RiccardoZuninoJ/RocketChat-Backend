@@ -2,7 +2,7 @@ var app = require('express')();
 var cors = require('cors');
 var server = require('http').Server(app);
 var io = require('socket.io')(server, { cors: { origin: '*' } });
-
+const port = process.env.PORT || 3000;
 
 io.on('connection', function (socket) {
     console.log("Client connected - " + socket.id);
@@ -25,6 +25,6 @@ app.get('/', function (req, res) {
     res.send('Server is running!');
 });
 
-server.listen(80, () => {
-    console.log('Server running and listening on port 80');
+server.listen(port, () => {
+    console.log('Server running and listening on port ' + port);
 });
