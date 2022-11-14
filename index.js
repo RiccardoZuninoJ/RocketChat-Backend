@@ -37,6 +37,12 @@ io.on('connection', function (socket) {
     socket.on('msg', (data) => {
         console.log("Received message from client - " + data.text);
         console.log("Sending message to client - " + data.to);
+        data = {
+            text: data.text,
+            from: socket.id,
+            to: data.to,
+            dateTime: new Date()
+        }
         //Send to recipient
         io.to(data.to).emit('msg', data);
     })
