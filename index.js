@@ -35,7 +35,7 @@ io.on('connection', function (socket) {
     });
     //Send to certain client in data.recipientId
     socket.on('msg', (data) => {
-        console.log("Received message from client - " + data.text);
+        console.log("Received message from client - " + socket.id);
         console.log("Sending message to client - " + data.to);
         data = {
             text: data.text,
