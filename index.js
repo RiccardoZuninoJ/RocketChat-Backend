@@ -3,7 +3,6 @@ var cors = require('cors');
 var server = require('http').Server(app);
 var io = require('socket.io')(server, { cors: { origin: '*' } });
 const port = process.env.PORT || 4000;
-var bcrypt = require('bcrypt');
 
 var connectedUsers = [];
 
@@ -21,6 +20,7 @@ io.on('connection', function (socket) {
                 user.publicKey = data;
             }
         });
+        console.log(connectedUsers);
     });
     socket.on('get_public_key', (data) => {
         console.log("Received public key request for client - " + data.to);
